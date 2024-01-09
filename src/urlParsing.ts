@@ -19,5 +19,16 @@ interface UrlParts {
 }
 
 export function parseUrl(url: string): UrlParts {
-   // 請在此處寫下你的程式碼
+  // 請在此處寫下你的程式碼
+  try {
+    const parseUrl = new URL(url);
+    return {
+      protocol: parseUrl.protocol,
+      hostname: parseUrl.hostname,
+      path: parseUrl.pathname,
+    }
+  }catch(e) {
+    throw new Error('Invalid URL');
+  
+  }
 }
